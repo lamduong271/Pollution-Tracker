@@ -49,7 +49,7 @@ export default class ForecastChart extends React.Component {
             <PureChart type={'bar'}
                 data={data}
                 width={width}
-                height={height/4}
+                height={height/5}
                 backgroundColor={'rgba(225, 230, 242,1)'}
                 paddingTop={50}
                 showEvenNumberXaxisLabel={false}

@@ -18,21 +18,49 @@ import Speedometer from 'react-native-speedometer-chart';
 const { height, width } = Dimensions.get('window');
 import { ProgressCircle }  from 'react-native-svg-charts';
 import PercentageCircle from 'react-native-percentage-circle';
+import UVadvices from '../../assets/common';
 export default class SpeedometerWrapper extends React.Component {
   static navigationOptions = {
     header: null
   };
 
+  renderAdvices = (arrayAdvice) => {
+    return arrayAdvice.map(advice => {
+      return (
+        <Text key={advice} style= {[{marginTop:5},styles.advicesList]}> {advice}</Text>
+      )
+    })
+  }
+
+  checkCurrentUVIndexData = (value) => {
+    if(value>1 && value <=2) {
+      return this.renderAdvices(UVadvices._0_2)
+    }
+    else if(value>2 && value <=5) {
+      return this.renderAdvices(UVadvices._3_5)
+    }
+    else if(value>5 && value <=7) {
+      return this.renderAdvices(UVadvices._6_7)
+    }
+    else if(value>7 && value <=10) {
+      return this.renderAdvices(UVadvices._8_10)
+    }
+    else {
+      return this.renderAdvices(UVadvices._11)
+    }
+  }
+
   render() {
     const {currentUVIndexData} = this.props;
     const progress = Number(currentUVIndexData.value)*10;
-    console.log("forecastData",this.props.forecastData)
+    console.log("UVadvices",UVadvices)
+    console.log("currentUVIndexData",currentUVIndexData)
     return (
       <View style={{flex:1,flexDirection:'column'}}>
           <View style={{flexDirection:'row'}}>
-          <View style={{ width:'65%',paddingLeft:40, marginTop:30}}>
+          <View style={{ width:'65%',paddingLeft:40, marginTop:20}}>
             <PercentageCircle 
-            style={{alignContent: 'center',alignSelf: 'center',}}
+            style={{alignContent: 'center',alignSelf: 'center'}}
             radius={100} 
             percent={progress} 
             color={"rgba(124, 142, 255,1)"}
@@ -40,6 +68,10 @@ export default class SpeedometerWrapper extends React.Component {
             innerColor={'rgba(225, 230, 242,1)'}
             bgcolor={'#fff'}>
             </PercentageCircle>  
+
+            <View style={{marginTop:20}}>
+                {this.checkCurrentUVIndexData(currentUVIndexData.value)}
+            </View>
           </View>
 
           <View style={styles.uvLevelWrapper}>
@@ -126,6 +158,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex:1,
     alignItems:'center' ,
+    marginTop: 40,
   },
   selected:{
     backgroundColor:'#5e73ff',
@@ -135,6 +168,17 @@ const styles = StyleSheet.create({
   },
   levelContent:{
     alignSelf: 'center',
+  },
+  advicesList: {
+        borderWidth:0.2,
+        padding: 5,
+        borderRadius: 10,
+        shadowOffset: {
+            width: 4,
+            height: 4,
+        },
+      shadowColor: '#5e73ff',
+      shadowOpacity: 0.4,
   }
     
   
