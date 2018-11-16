@@ -31,13 +31,30 @@ export default class SingleDayForecast extends React.Component {
   componentDidMount() {
   }
 
+
+  checkIcon = (airQuality) => {
+    if(airQuality <= 35) {
+      return require('../../assets/images/face/less35.png')
+    }
+    else if( airQuality >35 && airQuality <= 40) {
+      return require('../../assets/images/face/less40.png')
+    }
+    else if( airQuality >40 && airQuality <= 50) {
+      return require('../../assets/images/face/less50.png')
+    }
+    else if( airQuality >50 && airQuality <= 70) {
+      return require('../../assets/images/face/less75.png')
+    }
+    return require('../../assets/images/face/less100.png')
+  }
+
   renderForecast= ({item, index}) => {
     return (
        <View style={styles.carousel}>
         <Text style={[styles.centerContent]}>{item.datetime.substring(11,16)}</Text>
         <Image 
               style={[styles.forecastImage]} 
-              source={require('../../assets/images/face/verybad.png')}>
+              source={this.checkIcon(item.breezometer_aqi)}>
         </Image>
         <Text 
               style={[styles.centerContent,{ color:item.breezometer_color}]}>

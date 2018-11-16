@@ -44,12 +44,12 @@ export default class MainScreen extends React.Component {
           fet:false,
         cities:[
           {
-            name:'Hanoi',
+            name:'Helsinki',
             id:'1',
-            degree:30
+            degree:7
           },
           {
-            name:'Helsinki',
+            name:'Hanoi',
             id: '2',
             degree: 9
           },
@@ -62,72 +62,94 @@ export default class MainScreen extends React.Component {
         currentCity:{},
       }
   }
+
+  checkIcon = (airQuality) => {
+    if(airQuality <= 35) {
+      return require('../assets/images/face/less35.png')
+    }
+    else if( airQuality >35 && airQuality <= 40) {
+      return require('../assets/images/face/less40.png')
+    }
+    else if( airQuality >40 && airQuality <= 50) {
+      return require('../assets/images/face/less50.png')
+    }
+    else if( airQuality >50 && airQuality <= 70) {
+      return require('../assets/images/face/less75.png')
+    }
+    return require('../assets/images/face/less100.png')
+  }
   
 
-    renderCities = ({item, index}) => {
-      return (
-          <ImageBackground
-            source={require('../assets/images/weather/sunshine.jpg')}
-            style = {
-              styles.header
-            } 
-            imageStyle = {
-              {
-                borderRadius: 15
-              }
+  renderCities = ({item, index}) => {
+    return (
+      <ImageBackground
+          source={require('../assets/images/weather/sunshine.jpg')}
+          style = {
+            styles.header
+          } 
+          imageStyle = {
+            {
+              borderRadius: 15
             }
+          }
+          >
+          <LinearGradient
+            colors = {
+              ["rgba(124, 142, 255,0.3)", "rgba(124, 142, 255,1)"]
+            }
+            start={[0.0, 0.5]}
+            end={[1.0, 0.5]}
+            locations={[0.0, 1.0]}
+            style={styles.header}
             >
-            <LinearGradient
-              colors = {
-                ["rgba(124, 142, 255,0.3)", "rgba(124, 142, 255,1)"]
+            <View style={styles.mainInfor}>
+              <Text style={styles.cityName}>{item.name}</Text>
+              <Text style={styles.Temperature}>{item.degree} C</Text>
+              {
+                  this.state.fetchDataDone ?
+              <Animatable.Image
+              animation = "pulse"
+              iterationCount = "infinite"
+              duration = {
+                2000
               }
-              start={[0.0, 0.5]}
-              end={[1.0, 0.5]}
-              locations={[0.0, 1.0]}
-              style={styles.header}
-              >
-              <View style={styles.mainInfor}>
-                <Text style={styles.cityName}>{item.name}</Text>
-                <Text style={styles.Temperature}>{item.degree} C</Text>
-                <Animatable.Image
-                animation = "pulse"
-                iterationCount = "infinite"
-                duration = {
-                  2000
+              style={styles.expression} 
+              source={this.checkIcon(this.state.currentAirQuanlity.breezometer_aqi)}>
+              </Animatable.Image>
+              :
+              ''
+            }
+                {
+                  this.state.fetchDataDone ?
+                  <View 
+                    style={styles.quanlityInfor}>
+                    <Text 
+                    style={[{
+                      color:this.state.currentAirQuanlity.breezometer_color,
+                      },styles.breezometerColor]}>
+                      {this.state.currentAirQuanlity.breezometer_aqi}
+                    </Text>
+                    <Text style={{color:'#fff', fontWeight:'500', fontSize:20}}>
+                    {this.state.currentAirQuanlity.breezometer_description}
+                    </Text>
+                  </View>
+                  :
+                  <View style={styles.quanlityInfor}>
+                    <Text style={styles.breezometerColor}>
+                      00
+                    </Text>
+                    <Text>
+                      Loading...
+                    </Text>
+                  </View>
                 }
-                style={styles.expression} 
-                source={require('../assets/images/face/verybad.png')}></Animatable.Image>
-                  {
-                    this.state.fetchDataDone ?
-                    <View 
-                      style={styles.quanlityInfor}>
-                      <Text 
-                      style={[{
-                        color:this.state.currentAirQuanlity.breezometer_color,
-                        },styles.breezometerColor]}>
-                        {this.state.currentAirQuanlity.breezometer_aqi}
-                      </Text>
-                      <Text style={{color:'#fff', fontWeight:'500', fontSize:20}}>
-                      {this.state.currentAirQuanlity.breezometer_description}
-                      </Text>
-                    </View>
-                    :
-                    <View style={styles.quanlityInfor}>
-                      <Text style={styles.breezometerColor}>
-                        00
-                      </Text>
-                      <Text>
-                        Loading...
-                      </Text>
-                    </View>
-                  }
-              </View>
-                    
-            </LinearGradient>
-          </ImageBackground>
-        
-      );
-    }
+            </View>
+                  
+          </LinearGradient>
+        </ImageBackground>
+      
+    );
+  }
 
     getCurrentCity = (index) => {
       var temCity = this.state.cities[index];
@@ -137,7 +159,7 @@ export default class MainScreen extends React.Component {
     }
 
     getCurrentAirQuanlity() {
-      axios.get(`https://api.breezometer.com/baqi/?lat=${this.state.latitude}&lon=${this.state.longitude}&key=271ef7c0617649c68afadfe6d05e1c12`)
+      axios.get(`https://api.breezometer.com/baqi/?lat=${this.state.latitude}&lon=${this.state.longitude}&key=c4547e6d71124b61bf4d19efdb4862ad`)
             // axios.get(`https://api.aerisapi.com/airquality/44.9778,-93.265?client_id=fvgPmOxudcmTXhAv20s17&client_secret=asHpyKPtiBPB5rS5UHjreLv9BTtHoJxL3Qi2fCju`)
        .then((responseJson) => {
          this.setState({

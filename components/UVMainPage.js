@@ -119,6 +119,6 @@ getLocation = () => { // Change the function so it has access to the outer scope
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50
+    marginTop: 20
   },
 });

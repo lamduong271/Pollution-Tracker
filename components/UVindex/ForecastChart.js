@@ -45,7 +45,7 @@ export default class ForecastChart extends React.Component {
       ]
 
     return (
-        <View style={{flexDirection:'column', marginBottom:50}}>
+        <View style={{flexDirection:'column', marginBottom:40}}>
             <PureChart type={'bar'}
                 data={data}
                 width={width}

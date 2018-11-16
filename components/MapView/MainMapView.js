@@ -32,7 +32,7 @@ export default class MainMapViewComponent extends Component {
   }
 
   getCurrentAirQuanlity() {
-    axios.get(`https://api.breezometer.com/baqi/?lat=21.0245&lon=105.84117&key=271ef7c0617649c68afadfe6d05e1c12`)
+    axios.get(`https://api.breezometer.com/baqi/?lat=21.0245&lon=105.84117&key=c4547e6d71124b61bf4d19efdb4862ad`)
           // axios.get(`https://api.aerisapi.com/airquality/44.9778,-93.265?client_id=fvgPmOxudcmTXhAv20s17&client_secret=asHpyKPtiBPB5rS5UHjreLv9BTtHoJxL3Qi2fCju`)
      .then((responseJson) => {
        console.log(responseJson)

@@ -55,7 +55,7 @@ export default class FourDaysForecast extends React.Component {
   }
 
   getFourDaysForestcast() {
-    axios.get(`https://api.breezometer.com/forecast/?lat=${this.props.latitude}&lon=${this.props.longitude}&hours=92&key=271ef7c0617649c68afadfe6d05e1c12`)
+    axios.get(`https://api.breezometer.com/forecast/?lat=${this.props.latitude}&lon=${this.props.longitude}&hours=92&key=c4547e6d71124b61bf4d19efdb4862ad`)
       .then((responseJson) => {
         this.setState({
           forecast:responseJson.data.forecast,
@@ -92,7 +92,7 @@ export default class FourDaysForecast extends React.Component {
     const {forecast,fetchForecastDone} = this.state;
     const currentDate = this.getTime(day);
     console.log("day", day);
-    axios.get(`https://api.breezometer.com/forecast/?lat=${this.props.latitude}&lon=${this.props.longitude}&start_datetime=${day.datetime}&end_datetime=${day.datetime.substring(0, 10)}T23:00:00&key=271ef7c0617649c68afadfe6d05e1c12`)
+    axios.get(`https://api.breezometer.com/forecast/?lat=${this.props.latitude}&lon=${this.props.longitude}&start_datetime=${day.datetime}&end_datetime=${day.datetime.substring(0, 10)}T23:00:00&key=c4547e6d71124b61bf4d19efdb4862ad`)
       .then((responseJson) => {
         console.log(responseJson.data)
         this.setState({

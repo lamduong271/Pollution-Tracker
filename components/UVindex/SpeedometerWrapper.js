@@ -69,11 +69,13 @@ export default class SpeedometerWrapper extends React.Component {
             bgcolor={'#fff'}>
             </PercentageCircle>  
 
-            <View style={{marginTop:20}}>
-                {this.checkCurrentUVIndexData(currentUVIndexData.value)}
-            </View>
+            <ScrollView>
+              <View style={{marginTop:20, marginRight:10,paddingBottom:0}}>
+                  {this.checkCurrentUVIndexData(currentUVIndexData.value)}
+              </View>
+            </ScrollView>
           </View>
-
+          
           <View style={styles.uvLevelWrapper}>
             <View style={[styles.levels]}>
               <Text style={[styles.levelContent]}>0-2</Text>
@@ -136,8 +138,8 @@ export default class SpeedometerWrapper extends React.Component {
 const styles = StyleSheet.create({
   levels:{
     backgroundColor:'#fff',
-    height:width/5,
-    width:width/5,
+    height:width/5.5,
+    width:width/5.5,
     margin: 5,
     borderRadius: 10,
     alignSelf: 'center',
@@ -158,7 +160,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex:1,
     alignItems:'center' ,
-    marginTop: 40,
   },
   selected:{
     backgroundColor:'#5e73ff',
