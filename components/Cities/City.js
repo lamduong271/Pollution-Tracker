@@ -43,10 +43,13 @@ export default class City extends React.Component {
 
   render() {
     return (
-      <View
+      <LinearGradient
+      colors = {
+        ["rgba(94, 115, 255,0.4)", "rgba(94, 115, 255,0.8)"]
+      }
         style={styles.container}>
         <Text>{this.props.name}</Text>
-      </View>
+      </LinearGradient>
 
     );
   }
@@ -54,10 +57,18 @@ export default class City extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 60,
-    height:50,
-    width:width,
-    borderBottomWidth: 1,
-    borderBottomColor: 'grey',
+    marginBottom: 20,
+    height:height/10,
+    width:'100%',
+    borderRadius: 10,
+    shadowOffset: {
+        width: 4,
+        height: 4,
+      },
+      shadowColor: '#5e73ff',
+      shadowOpacity: 0.4,
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
   }
 });

@@ -91,6 +91,9 @@ export default class ListCityScreen extends React.Component {
              ["rgba(225, 232, 247,1)", "rgba(225, 230, 242,1)"]
         }
         style={styles.container}>
+        <View style={{ height:100, alignItems:'center', flexDirection:'column'}}>
+          <Text style={{alignSelf:'center',marginTop: 50,color:'#5e73ff', fontSize:25, fontWeight:'600'}}>Cities List</Text>
+        </View>
       <ListCity></ListCity>
       </LinearGradient>
       <Icon2
@@ -98,7 +101,7 @@ export default class ListCityScreen extends React.Component {
         style={styles.NavBar}
         name="menu"
         size={40}
-        color="#fff"
+        color="#5e73ff"
       />
       </Drawer>
     );

@@ -139,10 +139,12 @@ export default class ListCity extends React.Component {
     return (
       <View
         style={styles.container}>
+        
         <FlatList
             keyExtractor = {
                 item => item.name
             }
+            style={{}}
             data={this.state.cities}
             renderItem={({item}) => <City name={item.name}></City>}
         />
