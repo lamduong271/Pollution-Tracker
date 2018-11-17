@@ -48,7 +48,7 @@ export default class HomeScreen extends React.Component {
         <Button 
         title="Skip"
         color='black'
-        onPress={() => this.props.navigation.navigate('MainScreen')}
+        onPress={() => this.props.navigation.navigate('Questionares')}
         ></Button>
       </View>
       </LinearGradient>

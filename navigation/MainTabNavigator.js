@@ -6,6 +6,7 @@ import AirPollutionDaily from '../screens/AirPollutionDaily';
 import ListCityScreen from '../screens/ListCityScreen';
 import MapView from '../screens/MapView';
 import UVRadiation from '../screens/UVRadiation';
+import Questionares from '../screens/Questionares';
 const Navigation = createStackNavigator({
 Home: {
   screen: HomeScreen,
@@ -21,6 +22,9 @@ MapView: {
 },
 UVRadiation: {
   screen: UVRadiation
+},
+Questionares: {
+  screen: Questionares
 }
 },
 {
