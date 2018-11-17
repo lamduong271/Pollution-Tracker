@@ -21,6 +21,7 @@ import Menu from '../components/AirPollutionDaily/Menu';
 import ActionButton from 'react-native-circular-action-menu';
 import Drawer from 'react-native-drawer'
 const { height, width } = Dimensions.get('window');
+import Modal from "react-native-modal";
 
 
 export default class AirPollutionDaily extends React.Component {
@@ -28,12 +29,50 @@ export default class AirPollutionDaily extends React.Component {
     header: null
   };
 
+  constructor(props) {
+    super(props);
+          this.state = {
+            isModalVisible: false,
+        }
+    } 
+
   closeControlPanel = () => {
     this._drawer.close()
   };
   openControlPanel = () => {
     this._drawer.open()
   };
+
+  componentDidMount() {
+    setTimeout(()=>{ this._toggleModal() }, 3000);
+  }
+
+  _toggleModal = () =>{
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  }
+
+  renderAlert = () => {
+    return (
+      <View style={styles.popUp}>
+      <View style={{alignItems:'center', padding:20,borderBottomWidth:1, borderBottomColor:'gray'}}>
+        <Text style={{fontSize:20,fontWeight:'600', color:'red'}}>WARNING!</Text>
+      </View>
+
+      <View style={{paddingLeft:20, paddingRight:20, paddingTop:20}}>
+        <Text>Air quanlity is very low</Text>
+        <Text>Please reduce strenuous physical exertion</Text>
+        <Text>Use your reliever inhaler more often</Text>
+       
+      </View>
+
+      <TouchableOpacity style={styles.cancel} onPress={this._toggleModal}>
+        <Text>Dismiss</Text>
+      </TouchableOpacity>
+        
+      </View>
+    )
+
+  } 
 
   renderMenu = () => {
     return (
@@ -89,6 +128,11 @@ export default class AirPollutionDaily extends React.Component {
       <View style={styles.container}>
       
       <MainScreen></MainScreen>
+
+      <Modal isVisible={this.state.isModalVisible} 
+          style={{justifyContent:'center', alignItems:'center'}}>
+            {this.renderAlert()}
+      </Modal>
       {/* <Menu></Menu> */}
       {/* <View style={{marginBottom:30}}>
         <ActionButton buttonColor="rgba(231,76,60,1)">
@@ -152,5 +196,20 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#5e73ff',
     margin: 15,
-  }
+    
+  },
+    cancel:{
+    position:'absolute',
+    left: '40%',
+    bottom:20,
+    backgroundColor:'#a1a1a3',
+    padding:10,
+    borderRadius:10,
+    margin: 5,
+  },
+  popUp:{ 
+    height:height/4, 
+    width:width/1.2, 
+    backgroundColor:'#fff', 
+    },
 });
