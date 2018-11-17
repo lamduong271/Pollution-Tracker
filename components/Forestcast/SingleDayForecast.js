@@ -98,6 +98,8 @@ export default class SingleDayForecast extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex:1,
+    paddingTop: 20,
+
   },
   centerContent:{
     marginTop: 10,
@@ -105,15 +107,15 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   forecastImage:{
-    height:50, 
-    width:50,
+    height:60, 
+    width:60,
     marginTop:10,
     alignSelf: 'center',
   },
   carousel:{
     flexDirection: 'column',
     backgroundColor:'#fff',
-    height:150,
+    height:200,
     width:90,
     alignSelf: 'center',
     alignContent: 'center',

@@ -44,12 +44,12 @@ export default class MainScreen extends React.Component {
           fet:false,
         cities:[
           {
-            name:'Helsinki',
+            name:'Hanoi',
             id:'1',
             degree:7
           },
           {
-            name:'Hanoi',
+            name:'Helsinki',
             id: '2',
             degree: 9
           },

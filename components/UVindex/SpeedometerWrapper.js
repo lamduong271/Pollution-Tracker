@@ -56,7 +56,7 @@ export default class SpeedometerWrapper extends React.Component {
     console.log("UVadvices",UVadvices)
     console.log("currentUVIndexData",currentUVIndexData)
     return (
-      <View style={{flex:1,flexDirection:'column'}}>
+      <View style={{flex:1,flexDirection:'column', marginTop:40}}>
           <View style={{flexDirection:'row'}}>
           <View style={{ width:'65%',paddingLeft:40, marginTop:20}}>
             <PercentageCircle 
@@ -70,7 +70,7 @@ export default class SpeedometerWrapper extends React.Component {
             </PercentageCircle>  
 
             <ScrollView>
-              <View style={{marginTop:20, marginRight:10,paddingBottom:0}}>
+              <View style={{marginTop:20, marginRight:10,marginBottom:10}}>
                   {this.checkCurrentUVIndexData(currentUVIndexData.value)}
               </View>
             </ScrollView>

@@ -37,27 +37,33 @@ export default class Detaild extends React.Component {
         pollutantsArr.push(
             {
             name:'co',
-            value:pollutants.co
+            value:pollutants.co,
+            percent:'56%'
             },
             {
             name:'no2',
-            value:pollutants.no2
+            value:pollutants.no2,
+            percent:'44%'
             },
             {
             name: 'o3',
-            value: pollutants.o3
+            value: pollutants.o3,
+            percent:'45%'
             },
             {
             name: 'pm10',
-            value: pollutants.pm10
+            value: pollutants.pm10,
+            percent:'66%'
             },
             {
             name: 'pm25',
-            value: pollutants.pm25
+            value: pollutants.pm25,
+            percent:'33%'
             },
             {
             name: 'so2',
-            value: pollutants.so2
+            value: pollutants.so2,
+            percent:'47%'
             })
 
         this.setState({
@@ -74,6 +80,8 @@ export default class Detaild extends React.Component {
           <Text style={styles.concentration}>{item.value.concentration}</Text>
           <Text style={styles.units}>{item.value.units}</Text>
        </View>
+       <Text style={styles.percent}>{item.percent}</Text>
+
         </View>
         )
     }
@@ -106,11 +114,11 @@ export default class Detaild extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     padding: 10,
   },
   details:{
-    height:100,
+    height:120,
     width:130,
     flexDirection: 'column',
     backgroundColor:'#fff',
@@ -123,6 +131,8 @@ const styles = StyleSheet.create({
       },
       shadowColor: '#5e73ff',
       shadowOpacity: 0.4,
+    paddingTop: 10,
+    paddingLeft: 10,
   },
   pollutantName: {
     color: '#5e73ff',
@@ -142,5 +152,10 @@ const styles = StyleSheet.create({
   units:{
     marginLeft: 5,
     color: '#8e8e8e'
+  },
+  percent: {
+    color:'black',
+    marginLeft:10,
+    marginTop: 5,
   }
 });
