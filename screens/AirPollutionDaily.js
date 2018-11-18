@@ -44,7 +44,7 @@ export default class AirPollutionDaily extends React.Component {
   };
 
   componentDidMount() {
-    setTimeout(()=>{ this._toggleModal() }, 3000);
+    setTimeout(()=>{ this._toggleModal() }, 6000);
   }
 
   _toggleModal = () =>{
