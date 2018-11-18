@@ -48,7 +48,30 @@ export default class City extends React.Component {
         ["rgba(94, 115, 255,0.4)", "rgba(94, 115, 255,0.8)"]
       }
         style={styles.container}>
-        <Text>{this.props.name}</Text>
+        <Text 
+          style={{alignItems:'center', fontSize:20, fontWeight:'500', color:'#fff', marginTop:20}}>
+          {this.props.infor.name}
+        </Text>
+
+        <View style={{
+            flexDirection:'column', 
+            right:90,
+            top:25, 
+            position:'absolute'
+            }}>
+          <Text>Air quanlity : {this.props.infor.aqi}</Text>
+          <Text>UV index : {this.props.infor.UV}</Text>
+        </View>
+
+        <Image 
+          style={{
+            height:50,
+            width:50,
+            position:'absolute',
+            right:10,
+            top:20
+          }} 
+          source={this.props.infor.source}></Image>
       </LinearGradient>
 
     );
@@ -70,5 +93,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
+    flexDirection:'row'
   }
 });

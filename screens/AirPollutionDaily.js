@@ -87,23 +87,23 @@ export default class AirPollutionDaily extends React.Component {
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('UVRadiation')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon onPress={() => this.props.navigation.navigate('UVRadiation')} name = "ios-sunny" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>UV Radiation</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('ListCityScreen')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon2 onPress={() => this.props.navigation.navigate('ListCityScreen')} name = "view-list" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>List cities</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('MapView')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon2 onPress={() => this.props.navigation.navigate('MapView')} name = "map-marker" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>Map View</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('MainScreen')} name = "ios-home" style={styles.actionButtonIcon} />
-            <Text style={styles.MenuText}>Home</Text>
+            <Icon2 onPress={() => this.props.navigation.navigate('Questionares')} name = "account" style={styles.actionButtonIcon} />
+            <Text style={styles.MenuText}>Profile</Text>
           </View>
         </View>
       </View>
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     left: 20
   },
     actionButtonIcon: {
-    fontSize: 20,
+    fontSize: 25,
     height: 22,
     color: '#5e73ff',
     margin: 15,

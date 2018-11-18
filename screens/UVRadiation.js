@@ -20,12 +20,21 @@ import UVMainPage from '../components/UVMainPage'
 import Drawer from 'react-native-drawer';
 import Icon2 from "react-native-vector-icons/MaterialCommunityIcons";
 const { height, width } = Dimensions.get('window');
+import Modal from "react-native-modal";
 
 
 export default class UVRadiation extends React.Component {
   static navigationOptions = {
     header: null
   };
+
+  constructor(props) {
+    super(props);
+          this.state = {
+            isModalVisible: false,
+        }
+    } 
+
   closeControlPanel = () => {
     this._drawer.close()
   };
@@ -33,9 +42,39 @@ export default class UVRadiation extends React.Component {
     this._drawer.open()
   };
 
+  componentDidMount() {
+    setTimeout(()=>{ this._toggleModal() }, 3000);
+  }
+
+  _toggleModal = () =>{
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  }
+
+  renderAlert = () => {
+    return (
+      <View style={styles.popUp}>
+      <View style={{alignItems:'center', padding:20,borderBottomWidth:1, borderBottomColor:'gray'}}>
+        <Text style={{fontSize:20,fontWeight:'600', color:'red'}}>WARNING!</Text>
+      </View>
+
+      <View style={{paddingLeft:20, paddingRight:20, paddingTop:20}}>
+        <Text>Air quanlity is very low</Text>
+        <Text>Please reduce strenuous physical exertion</Text>
+        <Text>Use your reliever inhaler more often</Text>
+       
+      </View>
+
+      <TouchableOpacity style={styles.cancel} onPress={this._toggleModal}>
+        <Text>Dismiss</Text>
+      </TouchableOpacity>
+        
+      </View>
+    )
+  }
+
   renderMenu = () => {
     return (
-      <View style={{flex:1,flexDirection:'column'}}>
+      <View style={{flex:1,flexDirection:'column',width:'100%'}}>
         <View style={{flex:1,backgroundColor:'#5e73ff',flexDirection:'row', width:'100%', justifyContent:'center'}}>
           <Text style={{ color:'#fff',fontSize:25, fontWeight:'600', alignSelf:'center'}}>Menu</Text>
         </View>
@@ -46,23 +85,23 @@ export default class UVRadiation extends React.Component {
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('UVRadiation')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon onPress={() => this.props.navigation.navigate('UVRadiation')} name = "ios-sunny" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>UV Radiation</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('ListCityScreen')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon2 onPress={() => this.props.navigation.navigate('ListCityScreen')} name = "view-list" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>List cities</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('MapView')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon2 onPress={() => this.props.navigation.navigate('MapView')} name = "map-marker" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>Map View</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('MainScreen')} name = "ios-home" style={styles.actionButtonIcon} />
-            <Text style={styles.MenuText}>Home</Text>
+            <Icon2 onPress={() => this.props.navigation.navigate('Questionares')} name = "account" style={styles.actionButtonIcon} />
+            <Text style={styles.MenuText}>Profile</Text>
           </View>
         </View>
       </View>
@@ -85,6 +124,10 @@ export default class UVRadiation extends React.Component {
       })}>
       <View style={styles.container}>
         <UVMainPage></UVMainPage>
+        <Modal isVisible={this.state.isModalVisible} 
+          style={{justifyContent:'center', alignItems:'center'}}>
+            {this.renderAlert()}
+        </Modal>
 
       </View>
       <Icon2
@@ -124,5 +167,19 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#5e73ff',
     margin: 15,
-  }
+  },
+  cancel:{
+    position:'absolute',
+    left: '40%',
+    bottom:20,
+    backgroundColor:'#a1a1a3',
+    padding:10,
+    borderRadius:10,
+    margin: 5,
+  },
+  popUp:{ 
+    height:height/4, 
+    width:width/1.2, 
+    backgroundColor:'#fff', 
+    },
 });

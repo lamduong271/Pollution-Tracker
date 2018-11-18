@@ -46,17 +46,17 @@ export default class MainScreen extends React.Component {
           {
             name:'Hanoi',
             id:'1',
-            degree:7
+            degree:7+'°'
           },
           {
             name:'Helsinki',
             id: '2',
-            degree: 9
+            degree: 9 +'°'
           },
           {
             name:'Vantaa',
             id: '3',
-            degree: 10
+            degree: 10+'°'
           }
         ],
         currentCity:{},

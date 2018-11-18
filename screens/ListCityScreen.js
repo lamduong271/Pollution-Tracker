@@ -37,7 +37,7 @@ export default class ListCityScreen extends React.Component {
 
   renderMenu = () => {
     return (
-      <View style={{flex:1,flexDirection:'column'}}>
+      <View style={{flex:1,flexDirection:'column',width:'100%'}}>
         <View style={{flex:1,backgroundColor:'#5e73ff',flexDirection:'row', width:'100%', justifyContent:'center'}}>
           <Text style={{ color:'#fff',fontSize:25, fontWeight:'600', alignSelf:'center'}}>Menu</Text>
         </View>
@@ -48,23 +48,23 @@ export default class ListCityScreen extends React.Component {
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('UVRadiation')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon onPress={() => this.props.navigation.navigate('UVRadiation')} name = "ios-sunny" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>UV Radiation</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('ListCityScreen')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon2 onPress={() => this.props.navigation.navigate('ListCityScreen')} name = "view-list" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>List cities</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('MapView')} name = "ios-home" style={styles.actionButtonIcon} />
+            <Icon2 onPress={() => this.props.navigation.navigate('MapView')} name = "map-marker" style={styles.actionButtonIcon} />
             <Text style={styles.MenuText}>Map View</Text>
           </View>
 
           <View style={{flexDirection:'row'}}>
-            <Icon onPress={() => this.props.navigation.navigate('MainScreen')} name = "ios-home" style={styles.actionButtonIcon} />
-            <Text style={styles.MenuText}>Home</Text>
+            <Icon2 onPress={() => this.props.navigation.navigate('Questionares')} name = "account" style={styles.actionButtonIcon} />
+            <Text style={styles.MenuText}>Profile</Text>
           </View>
         </View>
       </View>
@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
     top: 50,
     left: 20
   },
-    actionButtonIcon: {
-    fontSize: 20,
+  actionButtonIcon: {
+    fontSize: 25,
     height: 22,
     color: '#5e73ff',
     margin: 15,

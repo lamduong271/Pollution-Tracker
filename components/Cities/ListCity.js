@@ -35,17 +35,34 @@ export default class ListCity extends React.Component {
                 {
                   name:'Hanoi',
                   id:'1',
-                  degree:30
+                  degree:30,
+                  source:require('../../assets/images/face/less35.png'),
+                  aqi:35,
+                  UV:8
                 },
                 {
                   name:'Helsinki',
                   id: '2',
-                  degree: 9
+                  degree: 9,
+                  source:require('../../assets/images/face/less100.png'),
+                  aqi:88,
+                  UV:3
                 },
                 {
                   name:'Vantaa',
                   id: '3',
-                  degree: 10
+                  degree: 10,
+                  source:require('../../assets/images/face/less75.png'),
+                  aqi:75,
+                  UV:3
+                },
+                {
+                  name:'Bangkok',
+                  id: '4',
+                  degree: 20,
+                  source:require('../../assets/images/face/less40.png'),
+                  aqi:45,
+                  UV:8
                 }
               ],
               currentCity:{},
@@ -146,7 +163,7 @@ export default class ListCity extends React.Component {
             }
             style={{}}
             data={this.state.cities}
-            renderItem={({item}) => <City name={item.name}></City>}
+            renderItem={({item}) => <City infor={item}></City>}
         />
         <View style={styles.buttonContainer}>
         <Icon onPress={this._toggleModal}  name = "plus" style={styles.buttonAddCity} />
