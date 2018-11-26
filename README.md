@@ -7,9 +7,9 @@
   <img src="https://i.imgur.com/oKLe0Ei.png" width="550"/>
   
 
-  <img src="https://i.imgur.com/FCxBSEt.png" width="550"/>
-  <img src="https://i.imgur.com/RXTphb2.png" width="550"/>
-    <img src="https://i.imgur.com/RXTphb2.png" width="550"/>
-      <img src="https://i.imgur.com/Hsqq3cr.png" width="550"/>
-        <img src="https://i.imgur.com/WKcOBKM.png" width="550"/>
-        <img src="https://i.imgur.com/lFfkFqg.png" width="550"/>
+  <img src="https://i.imgur.com/FCxBSEt.png" width="350"/>
+  <img src="https://i.imgur.com/RXTphb2.png" width="350"/>
+    <img src="https://i.imgur.com/RXTphb2.png" width="350"/>
+      <img src="https://i.imgur.com/Hsqq3cr.png" width="350"/>
+        <img src="https://i.imgur.com/WKcOBKM.png" width="350"/>
+        <img src="https://i.imgur.com/lFfkFqg.png" width="350"/>
